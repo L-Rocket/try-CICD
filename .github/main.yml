@@ -1,0 +1,19 @@
+name: My First CI/CD         # 流程名称
+
+on: [push]                  # 触发条件：当代码发生 push（推送）时执行
+
+jobs:
+  build-and-run:            # 任务名称
+    runs-on: ubuntu-latest  # 运行环境：最新版 Ubuntu 虚拟机
+
+    steps:
+      - name: Checkout code # 步骤1：拉取仓库代码
+        uses: actions/checkout@v4
+
+      - name: Set up Python # 步骤2：安装 Python 环境
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Run script    # 步骤3：运行我们的 Python 脚本
+        run: python main.py
